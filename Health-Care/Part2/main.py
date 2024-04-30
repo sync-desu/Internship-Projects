@@ -188,7 +188,7 @@ required_filtered_housing.to_csv(f"{PATH_TO_SAVE_FOLDER}housing.csv", index=Fals
 ## Combined work of Harshitha P and Amrit Sutradhar ends here.
 
 
-### Problem Statement 8: Processing (Filtering and Merging) relevant housing and census data (by Harshitha P)
+### Problem Statement 8: Visualizing filtered data (by Chilaka Nikhitha)
 plt.figure(figsize=(10, 6))
 plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Households_Total_Livable"].values, color="skyblue")
 plt.title("Number of Households for 100 people by District")
