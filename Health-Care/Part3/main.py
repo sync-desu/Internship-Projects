@@ -61,8 +61,6 @@ plt.title("Hospital Beds per 10,000 People by State/UT")
 plt.legend()
 plt.show()
 
-# Identify states/UTs with least beds per population
-
 print("12] States/UTs with the least beds per 10,000 people:")
 print(merged_hc.head(3)[["State/UT", "Beds per 10000"]])
 print(f"-- Highly recommended to set up new hospital beds in the aforementioned States/UTs.\n")
