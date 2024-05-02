@@ -23,7 +23,6 @@ required_columns = [
 ]
 
 filtered_data = census_data[required_columns]
-print(f"1] Filtered data:\n{filtered_data.head()}\n")
 
 
 ### Problem Statement 2: Rename columns (by Chilaka Nikhitha)
@@ -41,7 +40,6 @@ column_name_mapping = {
 }
 
 filtered_data = filtered_data.rename(columns=column_name_mapping)
-print(f"2] Data with renamed columns:\n{filtered_data.head()}\n")
 
 
 ### Problem Statement 3: Rename State/UT names (by Harshitha P)
@@ -55,7 +53,6 @@ def rename_states(name: str) -> str:
     return " ".join(formatted_words)
 
 filtered_data["State/UT"] = filtered_data["State/UT"].apply(rename_states)
-print(f"3] Data with renamed & uniform State/UT:\n{filtered_data.head()}\n")
 
 
 ### Problem Statement 4: Update new State/UT formations (by Amrit Sutradhar)
@@ -75,5 +72,10 @@ filtered_data = filtered_data.apply(update_state_formations, axis=1)
 telangana_data = filtered_data.loc[filtered_data["State/UT"] == "Telangana"]
 laddakh_data = filtered_data.loc[filtered_data["State/UT"] == "Laddakh"]
 
-print(f"4.1] Updated Telangana district data:\n{telangana_data}\n")
-print(f"4.2] Updated Laddakh district data:\n{laddakh_data}\n")
+
+if __name__ == "__main__":
+    print(f"1] Filtered data:\n{filtered_data.head()}\n")
+    print(f"2] Data with renamed columns:\n{filtered_data.head()}\n")
+    print(f"3] Data with renamed & uniform State/UT:\n{filtered_data.head()}\n")
+    print(f"4.1] Updated Telangana district data:\n{telangana_data}\n")
+    print(f"4.2] Updated Laddakh district data:\n{laddakh_data}\n")
