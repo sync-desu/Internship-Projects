@@ -51,4 +51,4 @@ def normalize_names(name: str) -> str:
 required_govthosp_data["State/UT"] = required_govthosp_data["State/UT"].apply(normalize_names)
 print(f"14.2] Updating State/UT (normalizing)\n{required_govthosp_data.head()}\n")
 
-required_govthosp_data.to_csv(f"{SAVE_PATH}government.csv", index=False)
+required_govthosp_data.to_csv(f"{SAVE_PATH}government_hospital.csv", index=False)
