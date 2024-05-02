@@ -1,3 +1,14 @@
+"""
+Team Members:
+- Shabbir Ahmed Hasan (22BTRCL139)
+- Chilaka Nikhitha (22BTRCL042)
+- Harshitha P (22BTRCL064)
+- Amrit Sutradhar (22BTRCL014) : Leader
+
+Typehinting, formatting, merging and finalization of this code
+have been performed by Amrit Sutradhar.
+"""
+
 import pandas as pd
 import numpy as np
 
