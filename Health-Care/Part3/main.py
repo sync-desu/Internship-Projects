@@ -45,7 +45,7 @@ def update_date(date: str) -> str:
         valid = []
         for x in date.split("."):
             valid.append(x)
-        return ".".join(valid[::-1])
+        return "-".join(valid[::-1])
     return np.nan
 required_govthosp_data["Last_Updated"] = required_govthosp_data["Last_Updated"].apply(update_date)
 print(f"14.1] Updating date\n{required_govthosp_data.head()}\n")
