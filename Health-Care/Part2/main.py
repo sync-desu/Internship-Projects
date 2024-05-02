@@ -22,7 +22,7 @@ Then we continue with the problem statements mentioned in Day2.
 This is done because we are required to have the solutions of Day1 for processing in Day2.
 """
 
-PATH_TO_SAVE_FOLDER = "Health-Care/Part2/Clean-Data/"
+PATH_TO_SAVE_FOLDER = "Health-Care/Clean-Data/"
 PATH_TO_DATA_FOLDER = "Health-Care/Data/"
 
 ### Start of Day1
