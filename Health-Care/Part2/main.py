@@ -109,21 +109,19 @@ missing_result = pd.merge(missing_pre_update, missing_post_update, on="Column", 
 missing_result["Missing_Pre_Update"] = missing_result["Missing_Pre_Update"].astype(float)
 missing_result["Missing_Post_Update"] = missing_result["Missing_Post_Update"].astype(float)
 
-def display_missing():
-    sns.set(style="whitegrid")
-    fig, axis = plt.subplots(figsize=(10, 6))
-    sns.barplot(x="Column", y="Missing_Pre_Update", data=missing_result, alpha=0.5, label="Before")
-    sns.barplot(x="Column", y="Missing_Post_Update", data=missing_result, alpha=0.5, label="After")
-    axis.set_title("Percentage of Missing Data Before and After Data Filling")
-    axis.set_ylabel("Percentage of Missing Data")
-    axis.legend()
-    plt.xticks(rotation=45)
-    plt.show()
+sns.set(style="whitegrid")
+fig, axis = plt.subplots(figsize=(10, 6))
+sns.barplot(x="Column", y="Missing_Pre_Update", data=missing_result, alpha=0.5, label="Before")
+sns.barplot(x="Column", y="Missing_Post_Update", data=missing_result, alpha=0.5, label="After")
+axis.set_title("Percentage of Missing Data Before and After Data Filling")
+axis.set_ylabel("Percentage of Missing Data")
+axis.legend()
+plt.xticks(rotation=45)
+plt.show()
 
 
 ### Problem Statement 6: Saving the data (by Shabbir Ahmed Hasan)
-def save_census():
-    filtered_census.to_csv(f"{PATH_TO_SAVE_FOLDER}census.csv", index=False)
+filtered_census.to_csv(f"{PATH_TO_SAVE_FOLDER}census.csv", index=False)
 
 
 ### Problem Statement 7: Processing (Filtering and Merging) relevant housing and census data (by Harshitha P and Amrit Sutradhar)
@@ -185,73 +183,58 @@ required_housing_columns = [
 ]
 required_filtered_housing = updated_filtered_housing[required_housing_columns]
 
-def save_housing():
-    required_filtered_housing.to_csv(f"{PATH_TO_SAVE_FOLDER}housing.csv", index=False)
+required_filtered_housing.to_csv(f"{PATH_TO_SAVE_FOLDER}housing.csv", index=False)
 ## Combined work of Harshitha P and Amrit Sutradhar ends here.
 
 
 ### Problem Statement 8: Visualizing filtered data (by Chilaka Nikhitha)
-def display_data_1():
-    plt.figure(figsize=(10, 6))
-    plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Households_Total_Livable"].values, color="skyblue")
-    plt.title("Number of Households for 100 people by District")
-    plt.xlabel("District")
-    frame = plt.gca()
-    frame.get_xaxis().set_visible(False)    # Disable showing of District names
-    plt.ylabel("Households per 100 people")
-    plt.xticks(rotation=45)
-    plt.show()
+plt.figure(figsize=(10, 6))
+plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Households_Total_Livable"].values, color="skyblue")
+plt.title("Number of Households for 100 people by District")
+plt.xlabel("District")
+frame = plt.gca()
+frame.get_xaxis().set_visible(False)    # Disable showing of District names
+plt.ylabel("Households per 100 people")
+plt.xticks(rotation=45)
+plt.show()
 
 # Visualize Percentage of households that have toilet(s) in premise
-def display_data_2():
-    plt.figure(figsize=(10, 6))
-    plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Households_Total_Toilet_Premise"].values, color="lightgreen")
-    plt.title("Percentage of Households with Toilet(s) by District")
-    plt.xlabel("District")
-    frame = plt.gca()
-    frame.get_xaxis().set_visible(False)    # Disable showing of District names
-    plt.ylabel("Percentage of Households with Toilet(s)")
-    plt.xticks(rotation=45)
-    plt.show()
+plt.figure(figsize=(10, 6))
+plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Households_Total_Toilet_Premise"].values, color="lightgreen")
+plt.title("Percentage of Households with Toilet(s) by District")
+plt.xlabel("District")
+frame = plt.gca()
+frame.get_xaxis().set_visible(False)    # Disable showing of District names
+plt.ylabel("Percentage of Households with Toilet(s)")
+plt.xticks(rotation=45)
+plt.show()
 
 # Calculate Urban to Rural population ratio
 updated_filtered_housing["Urban_to_Rural_Ratio"] = updated_filtered_housing["Households_Urban_Livable"] / updated_filtered_housing["Households_Rural_Livable"]
 
 # Visualize Urban to Rural population ratio
-def display_data_3():
-    plt.figure(figsize=(10, 6))
-    plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Urban_to_Rural_Ratio"].values, color="orange")
-    plt.title("Urban to Rural Population Ratio by District")
-    plt.xlabel("District")
-    frame = plt.gca()
-    frame.get_xaxis().set_visible(False)    # Disable showing of District names
-    plt.ylabel("Urban to Rural Population Ratio")
-    plt.xticks(rotation=45)
-    plt.show()
+plt.figure(figsize=(10, 6))
+plt.plot(updated_filtered_housing["District"].values, updated_filtered_housing["Urban_to_Rural_Ratio"].values, color="orange")
+plt.title("Urban to Rural Population Ratio by District")
+plt.xlabel("District")
+frame = plt.gca()
+frame.get_xaxis().set_visible(False)    # Disable showing of District names
+plt.ylabel("Urban to Rural Population Ratio")
+plt.xticks(rotation=45)
+plt.show()
 
 
 ### Problem Statement 9: Calculating inconsistency in datasets (by Shabbir Ahmed Hasan)
-def calculate_inconsistency():
-    try:
-        merged_data["Households_Rural_Diff"] = (merged_data["Rural_Households"] - merged_data["Total Number of households"]) / merged_data["Rural_Households"] * 100
-        merged_data["Households_Urban_Diff"] = (merged_data["Urban_Households"] - merged_data["Total Number of households"]) / merged_data["Urban_Households"] * 100
+try:
+    merged_data["Households_Rural_Diff"] = (merged_data["Rural_Households"] - merged_data["Total Number of households"]) / merged_data["Rural_Households"] * 100
+    merged_data["Households_Urban_Diff"] = (merged_data["Urban_Households"] - merged_data["Total Number of households"]) / merged_data["Urban_Households"] * 100
 
-        major_difference_districts = merged_data[(abs(merged_data["Households_Rural_Diff"]) > 10) | (abs(merged_data["Households_Urban_Diff"]) > 10)]
-        major_difference_district_names = major_difference_districts["District Name"]
+    major_difference_districts = merged_data[(abs(merged_data["Households_Rural_Diff"]) > 10) | (abs(merged_data["Households_Urban_Diff"]) > 10)]
+    major_difference_district_names = major_difference_districts["District Name"]
 
-        print("\nDistricts with major differences in household counts:")
-        print(major_difference_district_names)
-    except KeyError:
-        pass
-    print("the names of the districts where a major difference is found in the data:")
-    print(housing_data["District Name"].head())
-
-
-if __name__ == "__main__":
-    display_missing()
-    save_census()
-    save_housing()
-    display_data_1()
-    display_data_2()
-    display_data_3()
-    calculate_inconsistency()
+    print("\nDistricts with major differences in household counts:")
+    print(major_difference_district_names)
+except KeyError:
+    pass
+print("the names of the districts where a major difference is found in the data:")
+print(housing_data["District Name"].head())
