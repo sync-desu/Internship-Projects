@@ -27,12 +27,11 @@ FROM (
 		a.city,
         COUNT(t.treatmentID) AS treatment_count,
         RANK() OVER (PARTITION BY t.diseaseID ORDER BY COUNT(t.treatmentID) DESC) AS city_rank
-	FROM
-		treatment t
-        JOIN disease d ON t.diseaseID = d.diseaseID
-        JOIN patient p ON t.patientID = p.patientID
-        JOIN person per ON p.patientID = per.personID
-        JOIN address a ON per.addressID = a.addressID
+	FROM treatment t
+	JOIN disease d ON t.diseaseID = d.diseaseID
+	JOIN patient p ON t.patientID = p.patientID
+	JOIN person per ON p.patientID = per.personID
+	JOIN address a ON per.addressID = a.addressID
 	GROUP BY
 		t.diseaseID,
         a.city
@@ -70,3 +69,26 @@ ORDER BY pcby.pharmacyName, d.diseaseName;
 
 -- Problem Statement 24 (by Amrit Sutradhar)
 -- insurance company and their target state (patients claiming insurance most in that particular state)
+WITH ClaimCounts AS (
+    SELECT
+        a.state,
+        ic.companyName,
+        COUNT(c.claimID) AS claimCounts,
+        ROW_NUMBER() OVER (PARTITION BY a.state ORDER BY COUNT(c.claimID) DESC) AS rowNumber
+    FROM patient p
+	JOIN person pe ON p.patientID = pe.personID
+	JOIN address a ON pe.addressID = a.addressID
+	JOIN treatment t ON p.patientID = t.patientID
+	JOIN claim c ON t.claimID = c.claimID
+	JOIN insuranceplan ip ON c.uin = ip.uin
+	JOIN insurancecompany ic ON ip.companyID = ic.companyID
+    GROUP BY
+        a.state,
+        ic.companyName
+)
+SELECT
+    state,
+    companyName,
+    claimCounts
+FROM ClaimCounts
+WHERE rowNumber = 1;
