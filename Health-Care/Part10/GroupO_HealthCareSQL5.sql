@@ -14,6 +14,17 @@ ORDER BY NumberOfTreatments desc;
 
 -- Problem Statement 21 (by Harshitha P)
 -- for each and every disease, number of males and females undergoing treatment and the male-to-female ratio
+SELECT
+	diseasename,
+	SUM(IF(per.gender='male', 1, 0)) AS male_count,
+	SUM(IF(per.gender='female', 1, 0)) AS female_count,
+	round((SUM(IF(per.gender='male', 1, 0)) / SUM(IF(per.gender='female', 1, 0)) ),2) AS male_to_female_ratio
+FROM person per
+JOIN patient p ON p.patientID = per.personID
+JOIN treatment t ON t.patientID = p.patientID
+JOIN disease d ON d.diseaseID = t.diseaseID
+GROUP BY d.diseaseid,d.diseasename;
+
 
 -- Problem Statement 22 (by Shabbir Ahmed Hasan)
 -- top 3 cities with the most number of treatments for every disease
