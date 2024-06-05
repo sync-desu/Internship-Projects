@@ -1,6 +1,0 @@
-LOAD DATA LOCAL INFILE 'C:/Users/Amrit/Desktop/Jain Projects/Futurense Internship/repositories/Internship-Projects/Health-Care/Part6/healthcare/Treatment/Treatment.csv'
-INTO TABLE Treatment
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
