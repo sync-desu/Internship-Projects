@@ -1,0 +1,26 @@
+Phase 1
+- PS1: Nikhitha (Calculating summary statistics, highlighting key attributes using various visualizations, and identifying normal/skewed distribution.)
+- PS2: Shabbir (Handle missing data.)
+
+Phase 2
+- PS3: Harshitha (Performing EDA on key attributes and identifying outliers.)
+- PS4: Amrit (Identifying the top-3 countries from which the highest number of guests have placed bookings.)
+
+Phase 3
+- PS5: Amrit (Calculating number of guests per month by hotel each year.)
+- PS6: Harshitha (Visualize the number of visitors each month for years 2015, 2016, and 2017, and identify which year had the most weekend bookings.)
+
+Phase 4
+- PS7: Shabbir (Analyze room type rates per night per person by hotel, and perform comparative analysis of average prices per night per country.)
+- PS8: Nikhitha (Visualize the most booked room types across countries and perform an analysis for reserved_room_type, sorted by values, with hue set to hotel.)
+
+Phase 5
+- PS9: Shabbir (Compare market segments for hotels across countries.)
+- PS10: Shabbir (Perform a HeatMap Correlation Analysis.)
+- PS11: Nikhitha (Visualize the percentage of adults accompanying children to hotels across countries using a pie chart.)
+- PS12: Nikhitha (Visualize booking cancellations across years and countries, and identify cancellation patterns by hotel type and market segment.)
+
+Phase 6 (Advanced)
+- PS13: Shabbir (Analyze guest demographics and booking behaviours using PowerBI and MySQL.)
+- PS14: Shabbir (Extract and visualize seasonal trends and booking patterns, identify peak and off-peak seasons and discuss strategic planning and pricing strategies.)
+- PS15: Summary of everything.
